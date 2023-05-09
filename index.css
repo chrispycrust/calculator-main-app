@@ -1,0 +1,170 @@
+/*
+QUESTIONS:
+- not sure where to store all the theme changes - maybe different css files? and then use js to load different css files according to user selection?
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Theme 1
+
+#### Backgrounds
+
+- Very dark desaturated blue (main background): hsl(222, 26%, 31%)
+- Very dark desaturated blue (toggle background, keypad background): hsl(223, 31%, 20%)
+- Very dark desaturated blue (screen background): hsl(224, 36%, 15%)
+
+#### Keys
+
+- Desaturated dark blue (key background): hsl(225, 21%, 49%)
+- Desaturated dark blue (key shadow): hsl(224, 28%, 35%)
+
+- Red (key background, toggle): hsl(6, 63%, 50%)
+- Dark red (key shadow): hsl(6, 70%, 34%)
+
+- Light grayish orange (key background): hsl(30, 25%, 89%)
+- Grayish orange (key shadow): hsl(28, 16%, 65%)
+
+#### Text
+
+- Very dark grayish blue: hsl(221, 14%, 31%)
+- White: hsl(0, 0%, 100%)
+
+## Typography
+
+### Body Copy
+
+- Font size (numbers): 32px
+
+### Font
+
+- Family: [League Spartan](https://fonts.google.com/specimen/League+Spartan)
+- Weights: 700
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+  --primary: white;
+  --background: hsl(222, 26%, 31%);
+  --screen-bg: hsl(224, 36%, 15%);
+  --keypad-toggle-bg: hsl(223, 31%, 20%);
+  --key-bg: hsl(30, 25%, 89%);
+  --key-shadow: hsl(28, 16%, 65%);
+  --special-key-bg: hsl(225, 21%, 49%);
+  --special-key-shadow: hsl(224, 28%, 35%);
+  --red-key-bg: hsl(6, 63%, 50%);
+  --red-key-shadow: hsl(6, 70%, 34%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Libre Bodoni', serif;
+}
+
+html {
+  font-size: 1rem;
+  font-weight: 700;
+  height: 100%;
+  background: var(--background);
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#calc-container {
+  width: 375px;
+  padding: 40px;
+  margin: auto;
+}
+
+h1 {
+  color: var(--primary);
+}
+
+h2 {
+  color: var(--primary);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.calc-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calc-screen {
+  background: var(--screen-bg);
+  height: 32px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+p {
+  font-size: 2rem;
+  color: var(--primary);
+  letter-spacing: 2px;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  padding: 25px;
+  background: var(--keypad-toggle-bg);
+  border-radius: 10px;
+}
+
+button {
+  /*for some reason button ignores html specification*/
+  font-size: 2rem;
+  height: 60px;
+  border-radius: 5px;
+  background: var(--key-bg);
+  box-shadow: 0 4px var(--key-shadow);
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+  background: red;
+}
+
+button.delete,
+button.special {
+  background: var(--special-key-bg);
+  box-shadow: 0 4px var(--special-key-shadow);
+  font-size: 1rem;
+}
+
+.reset {
+  grid-column: -5/-3;
+}
+
+button.special:hover {
+  background: red;
+}
+
+button.equals {
+  background: var(--red-key-bg);
+  box-shadow: 0 4px var(--red-key-shadow);
+  grid-column: -3/-1;
+}
+
+button.equals:hover {
+  background: yellow;
+}
