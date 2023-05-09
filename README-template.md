@@ -46,7 +46,52 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## My process
+## My process - notes in progress
+
+Calculator logic 
+
+Initial idea: 
+Set up final empty array (result) to store all values (store a succession of numbers and operators) 
+I think I need multiple arrays, so one for complete numbers, temp stored in variable “number” Once an operator is clicked, all the numbers will be joined into a string and push into array result to prep for a final calculation to happen 
+ When user presses “=“ join complete array and calculate final result 
+Although the way a simple calculator works is that it calculates one operation at a time in the order that it’s performed. 
+
+After examining calculator function on iOS
+The way the calc on iOS works is that as soon as another operator is hit after choosing 2 operands and an operation, it’ll show the current calculation to date. You don’t have to press equals to calculate everything at once.  Besides, if I save all the operators and numbers in an array it’ll automatically apply precedence to operators. Equals works as any other operator in showing a final result after 2 numbers and operand is clicked 
+
+So really a complete calculation is result = num1 operator num2 
+A result is always displayed on screen 
+When number is clicked, replace content of p with value of digit clicked, should do nothing if value is not a digit
+If another operator is clicked, current result is stored into number1, result stays on screen while result variable is emptied to stage another operation, apply operator, wait for user to apply number2
+currentNumber = [] 
+If user clicks a whole bunch of numbers in succession, display each number on the screen and store number into currentNumber
+If user clicks operator, join(“”) all numbers in array (gives complete string) and store into final number variable
+
+My only problem is I’m not sure how to relate any operator user selects as an actual mathematical operation behind the screens with the strings 
+Stack overflow suggested I can write simple functions for each operator
+e.g. if button.value is:
+“+”: result = +(‘num1’) + +(‘num2’); break;
+“-“: result = +(‘num1’) - +(‘num2’)
+
+Function add(num1, num2) 
+
+At any point, the user might:
+* click del to remove previous number
+	* might experiment with using splice on array
+	* if array is empty, return screen to default 0 
+* Click reset to empty all variable and show default on screen as 0
+* click “=“ to give final result 
+  
+⬜️ Extra useful functionality I've seen some calculators have and is in solution on odin project: 
+- documenting each complete number and operator punched in calc at the top of the number being entered into the screen
+
+⬜️ still not confident with appropriately naming the html elements and how to grab them with JS
+
+⬜️ how to replace 0 with the number we click on
+⬜️ how to deal with overflow of numbers
+- overflow should be a complete long ling, and not awkwardly cutoff, ideally cut off per integer instead of a sliver of a number
+
+⬜️ don't get why importing a font doesn't seem to work
 
 ### Built with
 
